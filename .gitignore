@@ -1,0 +1,7 @@
+venv/
+.env
+pytest.ini
+requirements-dev.txt
+tests/
+data/community/*.md
+dist/
