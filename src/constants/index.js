@@ -15,3 +15,8 @@ export const PLACE_LABELS = ['Home', 'Work', 'Church', 'School', 'Market']
 export const EMPTY_ROUTE = { origin: '', destination: '', steps: '', fare: '', tips: '', contributor: '' }
 
 export const MEMORY_ID_KEY = 'oyago_memory_id'
+
+export const PRIVACY_PATH = '/privacy'
+export const PRIVACY_UPDATED = '8 October 2026'
+// TODO: replace with the inbox you want privacy requests sent to
+export const CONTACT_EMAIL = 'privacy@oyago.app'
