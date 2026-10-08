@@ -1,0 +1,33 @@
+services:
+  - type: web
+    name: oyago-api
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    plan: free
+    envVars:
+      - key: BACKBOARD_API_KEY
+        sync: false
+      - key: ROUTES_ASSISTANT_ID
+        sync: false
+      - key: LLM_PROVIDER
+        value: openrouter
+      - key: MODEL_NAME
+        value: google/gemma-3-27b-it
+      - key: ALLOWED_ORIGINS
+        value: "*"
+
+  - type: web
+    name: oyago-web
+    runtime: static
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_API_URL
+        sync: false
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
