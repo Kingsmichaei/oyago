@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#F5C400" />
+    <title>OyaGo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <script>
+      // If the app crashes before React can show anything, print the error on the page
+      // instead of leaving a blank screen.
+      function oyagoShowError(msg) {
+        var root = document.getElementById('root')
+        if (!root || root.getAttribute('data-react-ready')) return
+        root.innerHTML =
+          '<div style="font-family:system-ui,sans-serif;color:#F4F1E8;padding:24px;max-width:640px">' +
+          '<h2 style="color:#F5C400;margin:0 0 8px">OyaGo could not start</h2>' +
+          '<p style="margin:0 0 12px">Send this error to whoever is helping you:</p>' +
+          '<pre style="white-space:pre-wrap;background:#1C1C1C;padding:12px;border-radius:8px">' +
+          String(msg).replace(/</g, '&lt;') + '</pre></div>'
+      }
+      window.addEventListener('error', function (e) {
+        oyagoShowError(e.message + (e.filename ? '\n' + e.filename + ':' + e.lineno : ''))
+      })
+      window.addEventListener('unhandledrejection', function (e) {
+        oyagoShowError(e.reason && (e.reason.stack || e.reason.message || e.reason))
+      })
+      // If nothing has rendered after 8 seconds, the app's code never ran.
+      setTimeout(function () {
+        oyagoShowError('The app code did not load. Check the terminal running "npm run dev" for errors.')
+      }, 8000)
+    </script>
+  </head>
+  <body style="background:#111111;color:#F4F1E8">
+    <div id="root">
+      <p style="font-family:system-ui,sans-serif;padding:24px;color:#F4F1E8">Loading OyaGo…</p>
+    </div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
