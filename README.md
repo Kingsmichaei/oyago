@@ -1,3 +1,5 @@
+![OyaGo cover](oyago-cover.png)
+
 # OyaGo 🚌
 
 **Ask how to reach anywhere in Lagos by danfo, BRT, keke or okada, in English or Pidgin.**
