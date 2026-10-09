@@ -1,0 +1,280 @@
+[
+  {
+    "name": "Oshodi",
+    "aliases": [
+      "Oshodi Interchange",
+      "Oshodi Transport Interchange"
+    ],
+    "lat": 6.5558,
+    "lng": 3.3508,
+    "verified": false
+  },
+  {
+    "name": "Abule-Egba",
+    "aliases": [
+      "Abule Egba",
+      "Abule-Egba Terminal"
+    ],
+    "lat": 6.6479,
+    "lng": 3.3046,
+    "verified": false
+  },
+  {
+    "name": "Ikeja",
+    "aliases": [
+      "Ikeja Bus Terminal"
+    ],
+    "lat": 6.5913,
+    "lng": 3.3388,
+    "verified": false
+  },
+  {
+    "name": "Ikeja Along",
+    "aliases": [],
+    "lat": 6.5987,
+    "lng": 3.3345,
+    "verified": false
+  },
+  {
+    "name": "Computer Village",
+    "aliases": [],
+    "lat": 6.5942,
+    "lng": 3.3402,
+    "verified": false
+  },
+  {
+    "name": "Allen",
+    "aliases": [
+      "Allen Avenue"
+    ],
+    "lat": 6.6014,
+    "lng": 3.3521,
+    "verified": false
+  },
+  {
+    "name": "Opebi",
+    "aliases": [],
+    "lat": 6.5893,
+    "lng": 3.3619,
+    "verified": false
+  },
+  {
+    "name": "Berger",
+    "aliases": [
+      "Ojodu Berger"
+    ],
+    "lat": 6.6416,
+    "lng": 3.3685,
+    "verified": false
+  },
+  {
+    "name": "Tollgate",
+    "aliases": [],
+    "lat": 6.627,
+    "lng": 3.374,
+    "verified": false
+  },
+  {
+    "name": "Ikorodu",
+    "aliases": [
+      "Ikorodu Garage",
+      "Ikorodu Terminal"
+    ],
+    "lat": 6.6212,
+    "lng": 3.502,
+    "verified": false
+  },
+  {
+    "name": "Odogunyan",
+    "aliases": [],
+    "lat": 6.6584,
+    "lng": 3.5205,
+    "verified": false
+  },
+  {
+    "name": "Igbogbo",
+    "aliases": [],
+    "lat": 6.5913,
+    "lng": 3.5171,
+    "verified": false
+  },
+  {
+    "name": "Mile 12",
+    "aliases": [],
+    "lat": 6.6045,
+    "lng": 3.3954,
+    "verified": false
+  },
+  {
+    "name": "Ketu",
+    "aliases": [],
+    "lat": 6.5928,
+    "lng": 3.3917,
+    "verified": false
+  },
+  {
+    "name": "Ojota",
+    "aliases": [],
+    "lat": 6.5871,
+    "lng": 3.3791,
+    "verified": false
+  },
+  {
+    "name": "Maryland",
+    "aliases": [],
+    "lat": 6.5743,
+    "lng": 3.369,
+    "verified": false
+  },
+  {
+    "name": "Anthony",
+    "aliases": [],
+    "lat": 6.5638,
+    "lng": 3.3723,
+    "verified": false
+  },
+  {
+    "name": "Yaba",
+    "aliases": [],
+    "lat": 6.5068,
+    "lng": 3.3755,
+    "verified": false
+  },
+  {
+    "name": "Oyingbo",
+    "aliases": [],
+    "lat": 6.4834,
+    "lng": 3.3815,
+    "verified": false
+  },
+  {
+    "name": "Idumota",
+    "aliases": [],
+    "lat": 6.4629,
+    "lng": 3.3867,
+    "verified": false
+  },
+  {
+    "name": "Tinubu",
+    "aliases": [
+      "Tinubu Square"
+    ],
+    "lat": 6.4538,
+    "lng": 3.3894,
+    "verified": false
+  },
+  {
+    "name": "CMS",
+    "aliases": [
+      "Marina",
+      "Marina/CMS"
+    ],
+    "lat": 6.4495,
+    "lng": 3.3898,
+    "verified": false
+  },
+  {
+    "name": "TBS",
+    "aliases": [
+      "Tafawa Balewa Square"
+    ],
+    "lat": 6.4471,
+    "lng": 3.4015,
+    "verified": false
+  },
+  {
+    "name": "Obalende",
+    "aliases": [],
+    "lat": 6.4491,
+    "lng": 3.4061,
+    "verified": false
+  },
+  {
+    "name": "Mile 2",
+    "aliases": [],
+    "lat": 6.4588,
+    "lng": 3.3134,
+    "verified": false
+  },
+  {
+    "name": "Apapa",
+    "aliases": [],
+    "lat": 6.4469,
+    "lng": 3.3622,
+    "verified": false
+  },
+  {
+    "name": "Badagry",
+    "aliases": [],
+    "lat": 6.4167,
+    "lng": 2.8846,
+    "verified": false
+  },
+  {
+    "name": "Ikotun",
+    "aliases": [],
+    "lat": 6.5523,
+    "lng": 3.2683,
+    "verified": false
+  },
+  {
+    "name": "Ayobo",
+    "aliases": [],
+    "lat": 6.602,
+    "lng": 3.2438,
+    "verified": false
+  },
+  {
+    "name": "Command",
+    "aliases": [],
+    "lat": 6.6269,
+    "lng": 3.2593,
+    "verified": false
+  },
+  {
+    "name": "Ikola",
+    "aliases": [],
+    "lat": 6.6384,
+    "lng": 3.2562,
+    "verified": false
+  },
+  {
+    "name": "Agege",
+    "aliases": [],
+    "lat": 6.6229,
+    "lng": 3.3203,
+    "verified": false
+  },
+  {
+    "name": "Iyana-Ipaja",
+    "aliases": [
+      "Iyana Ipaja"
+    ],
+    "lat": 6.6173,
+    "lng": 3.2973,
+    "verified": false
+  },
+  {
+    "name": "Ipaja",
+    "aliases": [],
+    "lat": 6.6095,
+    "lng": 3.2673,
+    "verified": false
+  },
+  {
+    "name": "Ajah",
+    "aliases": [],
+    "lat": 6.4695,
+    "lng": 3.5624,
+    "verified": false
+  },
+  {
+    "name": "Lekki",
+    "aliases": [
+      "Lekki Phase 1"
+    ],
+    "lat": 6.444,
+    "lng": 3.47,
+    "verified": false
+  }
+]

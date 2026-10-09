@@ -17,12 +17,14 @@ class DirectionsService:
         self.settings = settings
         self.memory = memory
 
-    async def ask(self, question: str, memory_id: str | None, thread_id: str | None) -> AskResponse:
+    async def ask(
+        self, question: str, memory_id: str | None, thread_id: str | None, origin: str | None = None
+    ) -> AskResponse:
         if not self.settings.routes_assistant_id:
             raise ConfigurationError("ROUTES_ASSISTANT_ID is not set. Run scripts/setup_assistant.py first.")
 
         places = await self.memory.place_texts(memory_id)
-        prompt = build_question_prompt(question, places)
+        prompt = build_question_prompt(question, places, origin)
 
         options = dict(
             system_prompt=DIRECTIONS_SYSTEM_PROMPT,
