@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Button from '../ui/Button'
 
-export default function ChatInput({ onSend, onNewTrip, busy, showNewTrip }) {
+export default function ChatInput({ onSend, onNewTrip, busy, showNewTrip, above }) {
   const [value, setValue] = useState('')
 
   function submit(e) {
@@ -16,6 +16,7 @@ export default function ChatInput({ onSend, onNewTrip, busy, showNewTrip }) {
       onSubmit={submit}
       className="border-t border-road bg-ink p-3 pb-[max(env(safe-area-inset-bottom),12px)] md:px-6 md:py-4"
     >
+      {above && <div className="mx-auto mb-2 max-w-3xl">{above}</div>}
       <div className="mx-auto flex max-w-3xl gap-2">
       {showNewTrip && (
         <Button type="button" variant="secondary" onClick={onNewTrip} className="px-3 text-xs">

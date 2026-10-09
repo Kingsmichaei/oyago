@@ -17,6 +17,6 @@ export const EMPTY_ROUTE = { origin: '', destination: '', steps: '', fare: '', t
 export const MEMORY_ID_KEY = 'oyago_memory_id'
 
 export const PRIVACY_PATH = '/privacy'
-export const PRIVACY_UPDATED = '8 October 2026'
+export const PRIVACY_UPDATED = '9 October 2026'
 // TODO: replace with the inbox you want privacy requests sent to
 export const CONTACT_EMAIL = 'privacy@oyago.app'

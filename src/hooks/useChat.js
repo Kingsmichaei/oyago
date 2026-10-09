@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { askQuestion } from '../api/oyago'
 
-export function useChat(memoryId) {
+export function useChat(memoryId, origin) {
   const [messages, setMessages] = useState([])
   const [threadId, setThreadId] = useState(null)
   const [busy, setBusy] = useState(false)
@@ -12,7 +12,7 @@ export function useChat(memoryId) {
     setMessages((m) => [...m, { role: 'user', text: question }])
     setBusy(true)
     try {
-      const res = await askQuestion({ question, memoryId, threadId })
+      const res = await askQuestion({ question, memoryId, threadId, origin })
       setThreadId(res.thread_id)
       setMessages((m) => [...m, { role: 'ai', text: res.answer }])
     } catch (e) {

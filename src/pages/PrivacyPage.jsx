@@ -27,7 +27,10 @@ export default function PrivacyPage({ onBack }) {
         <Section title="The short version">
           <ul>
             <li>No sign-up. We never ask for your name, phone number or email.</li>
-            <li>We do not use your GPS location.</li>
+            <li>
+              We only use your location if you tap "Use my location", only to find the nearest bus stop, and we
+              don't store it.
+            </li>
             <li>No ads, no tracking cookies, no selling your data.</li>
             <li>Your questions and saved places go to our AI provider so it can answer you.</li>
             <li>Routes you share are seen by other users.</li>
@@ -49,6 +52,13 @@ export default function PrivacyPage({ onBack }) {
             <strong>Saved places.</strong> When you save a place like Home or Work, we store the label and the
             place you typed under your random ID. When you ask a question, we send them along so "take me go work"
             makes sense. You don't need to give your exact address; a nearby landmark or area is enough.
+          </p>
+          <p>
+            <strong>Your location, only if you ask.</strong> When you tap "Use my location", your phone sends its
+            position to our server once. We use it to find the nearest bus stop, then throw it away: we don't save
+            it, write it to our logs, or send it to the AI. Only the place name (like "Ikotun") goes with your
+            question. If no known bus stop is close, our server asks OpenStreetMap for the area name, sending a
+            rounded position (accurate to about 100 metres), not your IP address.
           </p>
           <p>
             <strong>Routes you share.</strong> When you use "Add route", we store the route, fare, tips and the
@@ -74,6 +84,10 @@ export default function PrivacyPage({ onBack }) {
             </li>
             <li>
               <strong>Render</strong> hosts the app and the server.
+            </li>
+            <li>
+              <strong>OpenStreetMap (Nominatim)</strong> turns a rounded position into an area name, only when you
+              use "Use my location" and no known bus stop is nearby.
             </li>
             <li>
               <strong>Google Fonts</strong> serves the app's fonts, so Google sees your IP address when they load.

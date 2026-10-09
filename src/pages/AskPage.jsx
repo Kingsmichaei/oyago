@@ -2,10 +2,13 @@ import { useEffect, useRef } from 'react'
 import ChatInput from '../components/chat/ChatInput'
 import EmptyState from '../components/chat/EmptyState'
 import MessageBubble from '../components/chat/MessageBubble'
+import OriginBar from '../components/chat/OriginBar'
 import { useChat } from '../hooks/useChat'
+import { useCurrentLocation } from '../hooks/useCurrentLocation'
 
 export default function AskPage({ memoryId, onGoToPlaces }) {
-  const { messages, busy, send, reset } = useChat(memoryId)
+  const startPoint = useCurrentLocation()
+  const { messages, busy, send, reset } = useChat(memoryId, startPoint.origin)
   const endRef = useRef(null)
 
   useEffect(() => {
@@ -24,7 +27,22 @@ export default function AskPage({ memoryId, onGoToPlaces }) {
         <div ref={endRef} />
         </div>
       </div>
-      <ChatInput onSend={send} onNewTrip={reset} busy={busy} showNewTrip={messages.length > 0} />
+      <ChatInput
+        onSend={send}
+        onNewTrip={reset}
+        busy={busy}
+        showNewTrip={messages.length > 0}
+        above={
+          <OriginBar
+            origin={startPoint.origin}
+            status={startPoint.status}
+            error={startPoint.error}
+            onDetect={startPoint.detect}
+            onChange={startPoint.setOrigin}
+            onClear={startPoint.clear}
+          />
+        }
+      />
     </>
   )
 }
