@@ -11,6 +11,8 @@ services:
         sync: false
       - key: ROUTES_ASSISTANT_ID
         sync: false
+      - key: NOMINATIM_CONTACT
+        sync: false
       - key: LLM_PROVIDER
         value: openrouter
       - key: MODEL_NAME

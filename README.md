@@ -17,8 +17,32 @@ Built for the DEV Hacktoberfest Open-Source AI Challenge, Week 1: *Touch Grass*.
 | **Open-weight model** (Gemma 3 27B by default) | Writes the directions in the user's own style |
 | **Backboard RAG** | Holds the route knowledge (`backend/data/lagos_routes.md` + community routes), so answers come from real routes, not guesses |
 | **Backboard memory** | Each user's saved places (home, work, church), so "take me go work" just works |
-| **FastAPI** | `/ask`, `/places`, `/routes`, `/session`, `/health` |
+| **Use my location** | Snaps the phone's GPS to the nearest known bus stop (`backend/data/stops.json`), falling back to OpenStreetMap for the area name |
+| **FastAPI** | `/ask`, `/locate`, `/places`, `/routes`, `/session`, `/health` |
 | **React + Vite + Tailwind PWA** | Installable on any phone |
+
+## Use my location
+
+Typing where you're starting from gets old fast. Tap **📍 Use my location** above the chat box and
+OyaGo shows "Starting from: **Ikotun** · Change". Your next questions use that as the starting
+point, so you only type the destination.
+
+1. The browser asks for permission (only when you tap the button, never on page load).
+2. The phone's coordinates go to `POST /locate`, which finds the nearest stop in
+   `backend/data/stops.json` within `STOP_MATCH_RADIUS_M` (default 2 km).
+3. If no stop is that close, the server asks [OpenStreetMap Nominatim](https://nominatim.org/release-docs/latest/api/Reverse/)
+   for the suburb or neighbourhood name, with coordinates rounded to about 100 m. Answers are cached,
+   requests are limited to one per second, and if Nominatim is down the user is asked to type their
+   starting point instead.
+4. Only the place name is sent with `/ask` as `origin`. Coordinates are never stored, logged, or sent
+   to the model or Backboard.
+
+The coordinates in `stops.json` are approximate and marked `"verified": false`. Fix any that are off
+and flip the flag once checked. Add a stop there whenever a new place appears in `lagos_routes.md`.
+
+> Browsers only allow geolocation on HTTPS (or `http://localhost`). Render serves HTTPS, so production
+> is fine. For local dev, open the app at `http://localhost:5173`, not your LAN IP. To test on a real
+> phone, use an HTTPS tunnel.
 
 ## Project structure
 
@@ -34,14 +58,14 @@ oyago/
 │   │       ├── deps.py          # dependency injection (swapped out in tests)
 │   │       ├── router.py
 │   │       └── endpoints/       # one file per resource
-│   ├── data/                    # lagos_routes.md + community submissions
+│   ├── data/                    # lagos_routes.md, stops.json + community submissions
 │   ├── scripts/                 # one-off setup and model listing
 │   └── tests/                   # pytest suite, Backboard mocked
 ├── frontend/
 │   └── src/
 │       ├── api/                 # fetch client + typed endpoint calls
 │       ├── components/          # layout / chat / places / ui
-│       ├── hooks/               # useChat, usePlaces, useMemoryId
+│       ├── hooks/               # useChat, usePlaces, useMemoryId, useCurrentLocation
 │       ├── pages/               # Ask, Places, AddRoute
 │       ├── constants/
 │       └── styles/
@@ -57,7 +81,7 @@ adding a database later only touches that layer.
 ```bash
 cd backend
 pip install -r requirements-dev.txt
-cp .env.example .env                       # add your BACKBOARD_API_KEY
+cp .env.example .env                       # add your BACKBOARD_API_KEY and NOMINATIM_CONTACT
 ```
 
 Fill `data/lagos_routes.md` with routes you know (the setup script refuses to upload TODOs), then:
@@ -78,8 +102,18 @@ npm run dev
 ```
 
 ## Deploy on Render
-Push to GitHub → Render → **New → Blueprint** → pick the repo. Then set `BACKBOARD_API_KEY` and
-`ROUTES_ASSISTANT_ID` on `oyago-api`, and `VITE_API_URL` (the API's URL) on `oyago-web`.
+Push to GitHub → Render → **New → Blueprint** → pick the repo. Then set `BACKBOARD_API_KEY`,
+`ROUTES_ASSISTANT_ID` and `NOMINATIM_CONTACT` on `oyago-api`, and `VITE_API_URL` (the API's URL) on `oyago-web`.
+
+### Environment variables (API)
+
+| Variable | Required | What it's for |
+|---|---|---|
+| `BACKBOARD_API_KEY` | yes | Backboard API key |
+| `ROUTES_ASSISTANT_ID` | yes | Printed by `scripts/setup_assistant.py` |
+| `NOMINATIM_CONTACT` | recommended | An email or URL sent in the User-Agent to OpenStreetMap Nominatim, as their [usage policy](https://operations.osmfoundation.org/policies/nominatim/) asks, so they can reach you instead of blocking the app |
+| `STOP_MATCH_RADIUS_M` | no | How close a known stop must be to count as "where you are" (default `2000`) |
+| `LLM_PROVIDER`, `MODEL_NAME`, `ALLOWED_ORIGINS` | no | See `backend/.env.example` |
 
 > Render's free disk is wiped on restart. Community routes are safe because they live in Backboard
 > once uploaded, but the local `.md` copies are not.
